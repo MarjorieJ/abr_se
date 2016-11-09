@@ -59,5 +59,27 @@ public class ABR {
 		nbElements+=1;
 	}
 	
+	public boolean contains(Noeud n){
+		Noeud pointeur=this.root;
+		if (n.getCle()==pointeur.getCle()){
+			return true;
+		}
+		
+		while (pointeur.hasChildren()){
+			if (n.getCle()>pointeur.getCle()){
+				pointeur=pointeur.getChildR();
+			}else{
+				pointeur=pointeur.getChildL();
+			}
+			if (pointeur==null){
+				return false;
+			}
+			if (pointeur.getCle()==n.getCle()){
+				return true;
+			}
+		}		
+		return false;
+	}
+	
 	
 }
