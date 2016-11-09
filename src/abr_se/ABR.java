@@ -32,10 +32,11 @@ public class ABR {
 			this.root=n;
 			return;
 		}
-		//n.addParent(root);
-		//while{root.hasChildren()
+		n.addParent(root);
+		while (root.hasChildren()){
 			
-		//}
+		}
+			
 		
 	}
 	
