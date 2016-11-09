@@ -1,6 +1,9 @@
 package abr_se;
 
+import java.lang.Integer;
+import java.util.List;
 
+import sun.security.util.Length;
 
 public class ABR {
 	private int nbElements;
@@ -30,7 +33,7 @@ public class ABR {
 		return this.root;
 	}
 	
-	public void insert(Noeud n){
+	public void insert(Noeud n){ //on suppose que la clé de n n'est pas encore dans ABR
 
 		if (this.isEmpty()){
 			this.root=n;
@@ -59,14 +62,14 @@ public class ABR {
 		nbElements+=1;
 	}
 	
-	public boolean contains(Noeud n){
+	public boolean contains(int n){
 		Noeud pointeur=this.root;
-		if (n.getCle()==pointeur.getCle()){
+		if (n==pointeur.getCle()){
 			return true;
 		}
 		
 		while (pointeur.hasChildren()){
-			if (n.getCle()>pointeur.getCle()){
+			if (n>pointeur.getCle()){
 				pointeur=pointeur.getChildR();
 			}else{
 				pointeur=pointeur.getChildL();
@@ -74,11 +77,19 @@ public class ABR {
 			if (pointeur==null){
 				return false;
 			}
-			if (pointeur.getCle()==n.getCle()){
+			if (pointeur.getCle()==n){
 				return true;
 			}
 		}		
 		return false;
+	}
+	
+	public void toList(List<Integer> l){
+		for (int i=0;i<l.size();i++){
+			Noeud n=new Noeud(l[i]);
+			this.insert(n);
+		}
+		
 	}
 	
 	
