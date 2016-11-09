@@ -30,4 +30,8 @@ public class Noeud {
 		return ((this.childRight!=null)||(this.childLeft!=null));
 		
 	}
+	
+	public int getCle(){
+		return this.cle;
+	}
 }

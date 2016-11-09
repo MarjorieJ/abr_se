@@ -34,7 +34,9 @@ public class ABR {
 		}
 		n.addParent(root);
 		while (root.hasChildren()){
-			
+			if (n.getCle()>root.getCle()){
+				
+			}
 		}
 			
 		
