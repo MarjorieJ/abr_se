@@ -33,13 +33,23 @@ public class ABR {
 			return;
 		}
 		n.addParent(root);
-		while (root.hasChildren()){
-			if (n.getCle()>root.getCle()){
-				
+		Noeud parent=root;//Ce sera le parent provisoire en attendant de trouver le bon
+		
+		while (parent.hasChildren()){
+			if (n.getCle()>parent.getCle()){
+				parent=parent.getChildR();
+			}else {
+				parent=parent.getChildL();
 			}
 		}
-			
+		//en sortant de la boucle on a trouvé le bon parent
 		
+
+		n.addParent(parent); //on met à jour le parent du noeud
+		if (n.getCle()>parent.getCle()){ //on met à jour les enfants du parent
+			parent.addChildR(n);
+		}else {parent.addChildL(n);
+		}
 	}
 	
 	

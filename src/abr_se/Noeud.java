@@ -34,4 +34,11 @@ public class Noeud {
 	public int getCle(){
 		return this.cle;
 	}
+	
+	public Noeud getChildL(){
+		return this.childLeft;
+	}
+	public Noeud getChildR(){
+		return this.childRight;
+	}
 }
