@@ -41,4 +41,9 @@ public class Noeud {
 	public Noeud getChildR(){
 		return this.childRight;
 	}
+	
+	public Noeud getParent(){
+		return this.parent;
+	}
 }
+

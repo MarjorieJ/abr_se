@@ -1,16 +1,16 @@
 package abr_se;
 
-import java.util.List;
+
 
 public class ABR {
 	private int nbElements;
 	private Noeud root;
-	private List<Noeud> tree;
+
 	
-	public ABR(Noeud n, int nbElem){	
-		this.nbElements=nbElem;
+	public ABR(Noeud n){	
+		this.nbElements=1;
 		this.root=n;
-		tree.add(this.root);
+
 	}
 	
 	public ABR(){
@@ -26,19 +26,25 @@ public class ABR {
 		return (this.nbElements==0);
 	}
 	
+	public Noeud getRoot(){
+		return this.root;
+	}
+	
 	public void insert(Noeud n){
 
 		if (this.isEmpty()){
 			this.root=n;
 			return;
 		}
-		n.addParent(root);
+
 		Noeud parent=root;//Ce sera le parent provisoire en attendant de trouver le bon
 		
-		while (parent.hasChildren()){
+		while (((parent.getChildL()!=null)&(n.getCle()<parent.getCle()))||((parent.getChildR()!=null)&(n.getCle()>parent.getCle()))){
+			
 			if (n.getCle()>parent.getCle()){
 				parent=parent.getChildR();
-			}else {
+			}
+			else {
 				parent=parent.getChildL();
 			}
 		}
@@ -50,6 +56,7 @@ public class ABR {
 			parent.addChildR(n);
 		}else {parent.addChildL(n);
 		}
+		nbElements+=1;
 	}
 	
 	
